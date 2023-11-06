@@ -1,4 +1,6 @@
-const router = require('express').Router();
+const express = require("express")
+
+const router = express.Router()
 
 const fetchFilms = require('../utils/fetchFilms')
 
@@ -13,16 +15,17 @@ router.get("/:title",async (req,res)=>{
 
 
 router.post("/", (req, res) => {
-    console.log(req.body);
-    res.status(200).json({message:"Se ha guardado Test Movie"});
+    const film = req.body;
+    res.status(200).json({message: `Se ha guardado ${film.title}`});
 });
 
 router.put("/", (req, res) => {
-    console.log(req.body);
-    res.status(200).json({message: "Se ha actualizado Updated Test Movie" });
+    const film = req.body;
+    res.status(200).json({message: `Se ha actualizado ${film.title}` });
 });
 router.delete("/:title?", (req, res) => {
-    res.status(200).json({message:"Se ha borrado la película con ID: 123"});
+    const film = req.body;
+    res.status(200).json({id: 123, message: `Se ha borrado la película con ID: ${film.id}`});
    
 
 });
